@@ -1,0 +1,22 @@
+version: '3.0'
+services:
+  author:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: "aem/aem-author-63-sp1:10.1"
+    container_name: aem-author-sp1-new
+    ports:
+     - "4502:4502"
+    environment:
+      - RUN_MODES=author,local
+  publish:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: "aem/aem-publish-63-sp1:10.1"
+    container_name: aem-publish-sp1-new
+    ports:
+     - "4503:4503"
+    environment:
+      - RUN_MODES=publish,local
